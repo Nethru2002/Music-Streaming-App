@@ -6,7 +6,7 @@ const SongSchema = new mongoose.Schema({
     artist: { type: String, required: true },
     album: { type: String, default: 'Unknown Album' },
     filePath: { type: String, required: true },
-    coverArtPath: { type: String }, // <-- ADD THIS LINE
+    coverArtPath: { type: String },
 });
 
 module.exports = mongoose.model('Song', SongSchema);

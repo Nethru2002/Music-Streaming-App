@@ -62,7 +62,7 @@ function Player({ song }) {
         const newMutedState = !isMuted;
         audioRef.current.muted = newMutedState;
         setIsMuted(newMutedState);
-        if(!newMutedState) { // If unmuting, restore previous volume if it was 0
+        if(!newMutedState) { 
             if (volume === 0) setVolume(0.5);
         }
     };

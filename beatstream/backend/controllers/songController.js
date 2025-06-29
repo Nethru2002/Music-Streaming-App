@@ -53,7 +53,7 @@ exports.uploadSong = (req, res) => {
                 title: title || 'Unknown Title',
                 artist: artist || 'Unknown Artist',
                 album: album || 'Unknown Album',
-                // ✅ FIX: Save the relative path, not the absolute system path.
+                // Save the relative path, not the absolute system path.
                 filePath: `uploads/${req.file.filename}`, 
                 // Ensure cover art path is URL-friendly (uses forward slashes)
                 coverArtPath: coverArtPath ? coverArtPath.replace(/\\/g, '/') : null
@@ -64,14 +64,13 @@ exports.uploadSong = (req, res) => {
 
         } catch (error) {
             console.error('Error processing file:', error);
-            // If there's an error, delete the uploaded file to prevent orphans
             fs.unlinkSync(req.file.path);
             res.status(500).json({ message: 'Error processing file metadata.' });
         }
     });
 };
 
-// Search songs (no change needed here)
+// Search songs
 exports.searchSongs = async (req, res) => {
     try {
         const query = req.query.q;

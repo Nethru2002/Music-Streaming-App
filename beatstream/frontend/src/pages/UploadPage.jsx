@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function UploadPage() {
     const [file, setFile] = useState(null);
     const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false); // <-- ADD THIS
+    const [loading, setLoading] = useState(false); 
     const navigate = useNavigate();
 
     const handleFileChange = (e) => {
@@ -20,8 +20,8 @@ function UploadPage() {
             return;
         }
 
-        setLoading(true); // <-- ADD THIS
-        setMessage('Uploading...'); // <-- ADD THIS
+        setLoading(true); 
+        setMessage('Uploading...'); 
 
         const formData = new FormData();
         formData.append('audio', file);
@@ -29,12 +29,11 @@ function UploadPage() {
         try {
             await uploadSong(formData);
             setMessage('Song uploaded successfully! Redirecting...');
-            // Redirect to home page after a short delay
             setTimeout(() => navigate('/'), 2000);
         } catch (error) {
             setMessage('Error uploading song. Please try again.');
             console.error('Upload error:', error);
-            setLoading(false); // <-- ADD THIS
+            setLoading(false);
         }
     };
 

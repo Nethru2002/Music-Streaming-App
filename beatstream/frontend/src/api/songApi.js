@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const API_URL = `${import.meta.env.VITE_API_URL}/api/songs`;
 
-// ✅ FIX: Ensure this function RETURNS the promise from axios.
 export const getSongs = () => {
     return axios.get(API_URL);
 };
